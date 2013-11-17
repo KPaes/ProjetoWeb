@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+     
+
+  <ui:decorate template="/Templates/padrao.xhtml">
+        <ui:define name="conteudo">
+            <h1>Seja Nosso Cliente!</h1>
+            <h3>Preencha o formulário abaixo</h3>
+            
+            <h:form>
+            <h:panelGrid id="grid" columns="3" style="text-align:left" > 
+                <!--text-align:left-->
+                <h:outputLabel value="*Nome: "/>
+                <p:inputText title="Digite seu nome completo" size="45" id="nomeCliente" value="#{clienteController.cliente.nomeCliente}" 
+                            required="true" requiredMessage="Campo Obrigatório!"/>
+                <p:message for="nomeCliente"/>
+                
+                <h:outputLabel value="*Tel.: "/>
+                <p:inputMask title="Digite seu telefone" mask="(99)9999-9999" size="20" id="telCliente" value="#{clienteController.cliente.telCliente}" 
+                             required="true" requiredMessage="Campo Obrigatório!"/>  
+                
+                <p:message for="telCliente"/>
+                
+                <h:outputLabel value="*CPF: "/>
+                <p:inputMask title="Digite seu CPF" mask="999.999.999-99" size="20" id="cpfCliente" value="#{clienteController.cliente.cpfCliente}" 
+                             required="true" requiredMessage="Campo Obrigatório!"/>
+                <p:message for="cpfCliente"/>
+                
+                <h:outputLabel value="*Rua: "/>
+                <p:inputText title="Digite sua rua" size="45" id="ruaCliente" value="#{clienteController.cliente.ruaCliente}" 
+                             required="true" requiredMessage="Campo Obrigatório!"/>
+                <p:message for="ruaCliente"/>
+                
+                <h:outputLabel value="*Nº: "/>
+                <p:inputText title="Digite o número do consultório" size="05" id="numEndCliente" value="#{clienteController.cliente.numEndCliente}"
+                             required="true" requiredMessage="Campo Obrigatório!"/>
+                <p:message for="numEndCliente"/>
+                
+                <h:outputLabel value="Compl: "/>
+                <p:inputText title="Digite o complemento do consultório" size="15" id="numComplCliente" value="#{clienteController.cliente.complCliente}"/>
+                <br/>
+                <h:outputLabel value="*Bairro: "/>
+                <p:inputText title="Digite o seu bairro" size="45" id="bairroCliente" value="#{clienteController.cliente.bairroCliente}" 
+                             required="true" requiredMessage="Campo Obrigatório!"/>
+                <p:message for="bairroCliente"/>
+                
+                <h:outputLabel value="*Cidade: "/>
+                <p:inputText title="Digite o sua cidade"  size="45" id="cidadeCliente" value="#{clienteController.cliente.cidadeCliente}" 
+                             required="true" requiredMessage="Campo Obrigatório!"/>
+                <p:message for="cidadeCliente"/>
+                
+                <h:outputLabel value="*CEP: "/>
+                <p:inputMask title="Digite o seu cep" mask="99999-999" size="20" id="cepCliente" value="#{clienteController.cliente.cepCliente}"
+                             required="true" requiredMessage="Campo Obrigatório!"/>
+                <p:message for="cepCliente"/>
+                
+                <h:outputLabel value="*E-mail: "/>
+                <p:inputText title="Digite o seu e-mail" size="45" id="emailCliente" value="#{clienteController.cliente.emailCliente}" 
+                             required="true" requiredMessage="Campo Obrigatório!"/> 
+                <p:message for="emailCliente"/><br/>
+                
+            </h:panelGrid>
+                <p:commandButton title="Salvar" update="grid" style="text-align:center" icon="ui-icon-disk" value="Enviar" actionListener="#{clienteController.inserir()}" action="#{clienteController.showMessage()}" />
+             
+                <h4 style="text-align:center">Trabalhamos apenas com o estado de São Paulo</h4>
+        </h:form>
+        </ui:define>
+      
+    </ui:decorate>   
+</html>
+

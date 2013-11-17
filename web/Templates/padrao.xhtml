@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+ 
+    <h:head>
+        <link rel="shortcut icon" href="/resources/img/logo-kbyte.ico" type="image/icon" />   <!-- Ícone da página -->             
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Ceprodeo</title>
+        <style type="text/css">
+            body {background-color: #8bd83b;  font-size: 12px}
+            
+        </style> 
+        <title><ui:insert name="titulo">Home - Ceprodeo</ui:insert></title>
+    </h:head>
+    <h:body>
+        <div align="center">
+            <p:layout style="min-width:1020px;max-width:1020px;min-height:600px">                 
+ 
+               <!-- Menu superior --> 
+               <p:layoutUnit position="north" size="65">                   
+                  <h:form>
+                    <p:menubar>
+                          <p:menuitem icon="ui-icon-home" value="Home" url="index.jsf"/>                          
+                          <p:menuitem icon="ui-icon-person" value="O Laboratório" url="laboratorio.jsf" />
+                          <p:menuitem icon="ui-icon-note" value="Nossos Serviços" url="servicos.jsf"/>
+                          <p:menuitem icon="ui-icon-mail-closed" value="Contato" url="contato.jsf" />
+                          <p:menuitem icon="ui-icon-flag" value="Localização" url="localizacao.jsf" />
+
+                     </p:menubar>                      
+                 </h:form>
+                </p:layoutUnit>  
+               
+               <!-- Menu lado esquerdo -->
+                <p:layoutUnit position="west" size="220">  
+                    <ui:insert name="menu">
+                        <h:form>
+                            <p:menu style="width: 200px">
+                                <p:submenu label="Menu">
+                                    <p:menuitem value="Fazer meu cadastro" icon="ui-icon-contact" url="cadastroCliente.jsf"/> 
+                                    <p:menuitem value="Tabela de Preços" icon="ui-icon-tag"  outcome="tabela"/>
+                                    <p:menuitem value="Consultar Pedidos" icon="ui-icon-pin-s" outcome="consultarServicos"/>
+                                    
+                                </p:submenu>
+                            </p:menu>
+                            <br/><br/><br/><br/>
+                            <h:graphicImage width="100" url="/resources/img/logo.png" /> <!-- Logo CEPRODEO -->
+                        </h:form>
+                    </ui:insert>
+                </p:layoutUnit>  
+                
+               <!-- Conteúdo -->
+                <p:layoutUnit position="center">  
+                    <ui:insert name="conteudo">
+                        O que estiver aqui será substituido!
+                    </ui:insert>
+                </p:layoutUnit>  
+               
+                
+               <!-- Rodapé-->
+                 <p:layoutUnit position="south" size="100" header="Rodapé" resizable="true" closable="true" collapsible="true">                      
+                       <ui:insert name="rodape">                           
+                        <p>© 2013 by KByte since 2011. Ceprodeo All rights reserved.
+                            <h:graphicImage width="40" style="text-align:right" 
+                                            url="/resources/img/logo-kbyte.png" /> </p>                            
+                       </ui:insert>                                        
+                </p:layoutUnit> 
+<!--                <footer>
+                <ul class="icons">
+                    <p>© 2013 by KByte since 2011. Ceprodeo All rights reserved.
+                        <h:graphicImage width="40" style="text-align:right" 
+                                            url="/resources/img/logo-kbyte.png" /></p>
+                    <li><a href="#"><img src="/TemplateDB_LOGIN/resources/img/icon1.jpg" alt=""/>Facebook</a></li>
+                    <li><a href="#"><img src="/TemplateDB_LOGIN/resources/img/icon2.jpg" alt=""/>Twitter</a></li>
+                    <li><a href="#"><img src="/TemplateDB_LOGIN/resources/img/icon3.jpg" alt=""/>LinkedIn</a></li>
+                </ul>
+            </footer>-->
+                
+            </p:layout>  
+        </div>
+    </h:body>
+</html>

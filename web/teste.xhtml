@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:decorate template="/Templates/padrao.xhtml">
+        <ui:define name="conteudo">
+            <h:form>
+                <p:selectOneMenu height="100" id="tipoProtese" value="#{precoController.tipo}" onchange="">  
+            <f:selectItems itemLabel="" />
+                    <f:selectItem itemLabel="Selecione Tipo de Prótese" itemValue="" />  
+                    <f:selectItem itemLabel="Prótese Fixa (Fase Metal)" itemValue="Prótese Fixa (Fase Metal)" />  
+                   <f:selectItem itemLabel="Prótese Fixa (Fase em Resina)" itemValue="Prótese Fixa (Fase em Resina)" />  
+                   <f:selectItem itemLabel="Cromo Cobalto" itemValue="Cromo Cobalto" />  
+                    <f:selectItem itemLabel="Ortopedia Funcional" itemValue="Ortopedia Funcional" />  
+                   <f:selectItem itemLabel="Prótese Total" itemValue="Prótese Total" />  
+                  <f:selectItem itemLabel="Ortopedia Móvel" itemValue="Ortopedia Móvel" /> 
+                   <f:selectItem itemLabel="Ortopedia Fixa" itemValue="Ortopedia Fixa" />  
+                    <f:selectItem itemLabel="Componentes para Implantes" itemValue="Componentes para Implantes" /> 
+               </p:selectOneMenu> 
+    
+
+<!--    
+            </h:form> 
+ <h:form> -->
+
+
+
+            <p:commandButton value="OK" icon="ui-icon-search" actionListener="#{precoController.buscarTipo()}" >
+                  
+                <f:ajax render="tabela"/>
+                
+            </p:commandButton><br/> <br/> 
+ 
+             <p:dataTable id="tabela" var="tab" value="#{precoController.proteses}" >  
+                
+                <p:column headerText="Nome Prótese">  
+                    <h:outputText value="#{tab.nomeProtese}" />  
+                </p:column>  
+  
+                <p:column headerText="Preço">  
+                    <h:outputText value="#{tab.precoProtese}" />  
+                </p:column>  
+  
+                 
+            </p:dataTable> 
+    </h:form>
+            
+    </ui:define>
+      
+    </ui:decorate>
+</html>
+

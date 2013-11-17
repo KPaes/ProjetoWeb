@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <ui:decorate template="/Templates/padrao.xhtml">
+        <ui:define name="conteudo">
+            <h1>Contato</h1>
+        <h:form>
+	<h2> Fale Conosco </h2>
+            <h:panelGrid id="grid" columns="3" style="text-align:right">
+                <h:outputLabel value="*Nome: "/>
+                <p:inputText size="45" id="nome" value="#{emailController.mensagem.nome}" required="true" requiredMessage="Digite seu nome!"/>
+                <p:message for="nome"/>
+                
+                <h:outputLabel value="*E-mail: "/>
+                <p:inputText size="45" id="emailFulano" value="#{emailController.mensagem.emailFulano}" required="true" requiredMessage="Digite seu e-mail!"/>
+                <p:message for="emailFulano"/>
+                
+                <h:outputLabel value="*Assunto:"/>
+                <p:selectOneMenu id="assunto" value="#{emailController.mensagem.titulo}" required="true" requiredMessage="Selecione seu cargo!">
+                    <f:selectItem itemValue="0" itemLabel="Selecione:"/>
+                    <f:selectItem itemValue="Reclamações" itemLabel="Reclamações"/>
+                    <f:selectItem itemValue="Dúvidas" itemLabel="Dúvidas"/>
+                    <f:selectItem itemValue="Crítcias" itemLabel="Críticas"/>
+                    <f:selectItem itemValue="Outro" itemLabel="Outro"/>
+                </p:selectOneMenu>
+                <p:message for="assunto"/>
+                
+                <h:outputLabel value="*Mensagem:"/>
+                <p:inputTextarea id="mensagem" value="#{emailController.mensagem.mensagem}" 
+                                 cols="45" rows="6" 
+                                 required="true" requiredMessage="Digite a mensagem!"/> 
+                <p:message for="mensagem"/><br/> 
+                   
+                <p:commandButton update="grid" style="text-align:center" icon="ui-icon-disk" value="Enviar" actionListener="#{emailController.enviaEmail()}" action="#{emailController.limpaCampos()}" /> <br/>
+            </h:panelGrid>    
+        <h4>Ou ligue para (11)4183-5858</h4>
+        </h:form>
+            
+        </ui:define>
+    </ui:decorate>
+    
+</html>
+

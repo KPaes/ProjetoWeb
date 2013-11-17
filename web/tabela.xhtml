@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+     
+
+  <ui:decorate template="/Templates/padrao.xhtml">
+        <ui:define name="conteudo">
+            <h1> Tabela de Preço das Próteses</h1>
+           
+          
+            
+         <h:form id="form"> 
+         <h4>Se preferir, pode baixar a nossa tabela clicando em download</h4>
+         <p:commandButton id="downloadLink" value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);"   
+        icon="ui-icon-arrowthichk-s">  
+    
+             <p:fileDownload value="#{fileDownloadController.file}" />  
+
+         </p:commandButton> 
+        </h:form> 
+            
+            
+            <h4>Trabalhamos com vários tipos de próteses! 
+            Selecione abaixo a que você deseja saber o valor!!</h4>
+        
+            <h:form>  
+                <p:growl id="growl" showDetail="true" />  
+  
+            <p:selectOneMenu height="100" id="tipoProtese" value="#{tabelaController.tabela.tipoProtese}" onchange="">
+            <f:selectItem itemValue="" itemLabel="Selecione o tipo" />
+            <f:selectItems value="#{tabelaController.tabelas}" itemValue="#{tabelaController.tabelas}" />
+            <f:ajax render="tabela" listener="#{tabelaController.setTipo}"/>
+        </p:selectOneMenu>
+        
+            
+                <p:dataTable emptyMessage="Selecione um tipo de prótese primeiro" id="tabela" var="tab" value="#{tabelaController.proteses}" >  
+                
+                <p:column headerText="Nome Prótese">  
+                    <h:outputText value="#{tab.nomeProtese}" />  
+                </p:column>  
+  
+                <p:column headerText="Preço">  
+                    <h:outputText value="#{tab.precoProtese}" />  
+                </p:column>  
+  
+                 
+            </p:dataTable> 
+            
+            
+            </h:form>
+        </ui:define>
+      
+    </ui:decorate>
+    
+    <p:dialog modal="true" widgetVar="statusDialog" header="Baixando!" draggable="false" closable="false" resizable="false">  
+    <p:graphicImage value="/design/ajaxloadingbar.gif" />  
+    </p:dialog>  
+    <script type="text/javascript">  
+    function start() {  
+    PF('statusDialog').show();  
+}  
+  
+function stop() {  
+    PF('statusDialog').hide();  
+}  
+        </script>  
+</html>
+

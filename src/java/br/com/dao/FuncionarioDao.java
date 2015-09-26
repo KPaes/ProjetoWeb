@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 
 import br.com.exception.DaoException;
 import br.com.util.DbUtil;
-import br.com.bean.ClienteDent;
 import br.com.bean.Funcionario;
 
 public class FuncionarioDao {
